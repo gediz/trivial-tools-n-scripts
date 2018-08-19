@@ -1,10 +1,9 @@
-from datetime import datetime
 from bs4 import BeautifulSoup
 from requests import Session
 
 LoginCredentials = {
-    'customerNo': 'id',
-    'password': 'pw'
+    'customerNo': 'superonline-HESABIM-kullanici-adi',
+    'password': 'superonline-HESABIM-parola'
 }
 
 Headers = {
@@ -20,8 +19,9 @@ with Session() as Superonline:
 
     QuotaPage_Parsed = BeautifulSoup(QuotaPage.text, 'html.parser')
 
-    # Unrecognizable mess, huh?
-    DownloadAmount = ' '.join(QuotaPage_Parsed.find(class_='bb').find_all('td')[1].text.split())
-    UploadAmount = ' '.join(QuotaPage_Parsed.find(class_='bb').find_all('td')[2].text.split())
+    # Unrecognizable mess
+    TableData = QuotaPage_Parsed.find(class_='bb').find_all('td')
+    DownloadAmount = ' '.join(TableData[1].text.split())
+    UploadAmount = ' '.join(TableData[2].text.split())
 
-    print('DL: {}\nUL: {}'.format(DownloadAmount, UploadAmount))
+    print('Download: {}\nUpload: {}'.format(DownloadAmount, UploadAmount))
