@@ -1,0 +1,41 @@
+http://192.168.1.1/goform/goform_get_cmd_process?multi_data=1&isTest=false&cmd=modem_main_state%2Cpin_status%2Copms_wan_mode%2Copms_wan_auto_mode%2Cloginfo%2Cnew_version_state%2Ccurrent_upgrade_state%2Cis_mandatory%2Cppp_dial_conn_fail_counter&_=1590273790345
+
+http://192.168.1.1/goform/goform_get_cmd_process?isTest=false&cmd=wifi_lbd_enable&_=1590274923307
+"http://192.168.1.1/goform/goform_get_cmd_process?isTest=false&cmd=wifi_lbd_enable&_=$(date +%s%3N)"
+
+"http://192.168.1.1/goform/goform_get_cmd_process?multi_data=1&isTest=false&cmd=modem_main_state%2Cpin_status%2Copms_wan_mode%2Copms_wan_auto_mode%2Cloginfo%2Cnew_version_state%2Ccurrent_upgrade_state%2Cis_mandatory%2Cppp_dial_conn_fail_counter&_=$(date +%s%3N)"
+
+
+Referer: http://192.168.1.1/index.html
+
+curl -s -H "Referer: http://192.168.1.1/index.html" "http://192.168.1.1/goform/goform_get_cmd_process?multi_data=1&isTest=false&cmd=modem_main_state%2Cpin_status%2Copms_wan_mode%2Copms_wan_auto_mode%2Cloginfo%2Cnew_version_state%2Ccurrent_upgrade_state%2Cis_mandatory%2Cppp_dial_conn_fail_counter&_=$(date +%s%3N)"
+curl -s -H "Referer: http://192.168.1.1/index.html" -H 'Cookie: zwsd="1102?981521f1?7a5934de2b53?299da"' "http://192.168.1.1/goform/goform_get_cmd_process?isTest=false&cmd=lan_station_list&_=$(date +%s%3N)" | python -mjson.tool
+
+prettify with: python -mjson.tool
+
+rd_params0 = e.wa_inner_version
+rd_params1 = e.cr_version
+
+rd0: BD_TRCELMF286RMODULEVX.Y.Z
+rd1: CR_TRCELLMF286RVX.Y.Z
+BD_TRCELMF286RMODULEVX.Y.ZCR_TRCELLMF286RVX.Y.Z
+5bc3?b131d421d80?ed78a4cca78b?77
+
+could not find the pattern.
+RD                                  dec     epoch           human readable date time                dec-diff    epoch-diff
+edf4980df408f82d6330933dc3d72d56    631877  1590281871415   May 24, 2020 3:57:51.415 AM GMT+03:00
+1b2e34afec7ade7312f63c922364a40d    632468  1590282010978   May 24, 2020 4:00:10.978 AM GMT+03:00   591         139563
+c20871f97a4cc31991168c44a78a73f0    632804  1590283747205   May 24, 2020 4:29:07.205 AM GMT+03:00   336         1736227
+23ecf510bc629e52d17598e6afa4d055    634344  1590284461482   May 24, 2020 4:41:01.482 AM GMT+03:00   1540        714277
+6096d31f7083b47df71ac8eea7194c35    635058  1590284736510   May 24, 2020 4:45:36.510 AM GMT+03:00   714         275028
+08c64ef53bdbaf22b080f7283ac27cf6    635333  1590285123626   May 24, 2020 4:52:03.626 AM GMT+03:00   275         387116
+11029981521f137a5934de2b536299da    636163  1590331297858
+8fb60575c58a7b5147d165ae2d12f4bd    685139  1590336598119
+
+AD = md5(md5(rd0+rd1)+RD)
+
+do not forget to omit newline with "echo -n "
+
+1. send request to index.html with cmd=RD
+2. receive RD
+3. create ad with rd0+rd1 and RD

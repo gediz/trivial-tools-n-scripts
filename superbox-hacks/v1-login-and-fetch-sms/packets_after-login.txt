@@ -1,0 +1,8 @@
+home - startup (once)
+RD                              "some-md5"
+
+home - startup (once)
+goformId			"LOGIN_MULTI_USER"
+user				"$ID"
+password			"base64($PW)"
+AD				"some-md5"

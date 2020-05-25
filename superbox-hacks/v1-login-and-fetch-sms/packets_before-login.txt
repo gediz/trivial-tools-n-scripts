@@ -1,0 +1,33 @@
+login - startup (once)
+opms_wan_mode			"PPP"
+opms_wan_auto_mode		"PPP"
+loginfo				"timeout"
+ppp_status			"ppp_connected"
+
+login - startup (once)
+Language			"en"
+cr_version			"CR_TRCELLMF286RVX.Y.Z"
+wa_inner_version		"BD_TRCELMF286RMODULEVX.Y.Z"
+
+login - startup (twice, with 150 ms delay)
+modem_main_state		"modem_init_complete"
+puknumber			"10"
+pinnumber			"3"
+opms_wan_mode			"PPP"
+psw_fail_num_str		"5"
+login_lock_time			"-1"
+
+login - frequent (roughly every second)
+modem_main_state		"modem_init_complete"
+pin_status			"0"
+opms_wan_mode			"PPP"
+opms_wan_auto_mode		""
+loginfo				"timeout"
+new_version_state		""
+current_upgrade_state		""
+is_mandatory			""
+ppp_dial_conn_fail_counter	""
+
+login - frequent (twice (with ~20 ms diff) every 3 sec)
+wifi_lbd_enable			""
+
