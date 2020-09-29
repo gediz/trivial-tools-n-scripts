@@ -48,6 +48,11 @@ for entry in valid_entries:
             f_data = f.readlines()
         
         original_data = f_data[occ_line - 1]
+
+        # escape newline character, otherwise a literal newline would be looked for.
+        entry.msgid = entry.msgid.replace("\n", "\\n")
+        entry.msgstr = entry.msgstr.replace("\n", "\\n")
+
         old_translation = "\"{}\"".format(entry.msgid.encode('utf-8'))
         new_translation = "\"{}\"".format(entry.msgstr.encode('utf-8'))
         new_data = original_data.replace(old_translation, new_translation)
